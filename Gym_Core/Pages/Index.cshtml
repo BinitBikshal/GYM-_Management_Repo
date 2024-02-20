@@ -1,0 +1,85 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+  <div class="row">
+        <div class="col box1"> @*style=" background:aqua*@
+            <div class="row">
+                <div class="col text-center text-white">
+                    @Model.TotalMember
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center text-white">
+                    Total Members
+                </div>
+            </div>
+    </div>
+        <div class="col  box2">
+            <div class="row">
+                <div class="col text-center text-white">
+                    @Model.ActiveMembers
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col text-center text-white">
+                    Active Members
+                </div>
+            </div>
+    </div>
+        <div class="col  box3">
+            <div class="row">
+                <div class="col text-center text-white">
+                    @Model.InActiveMembers
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center text-white ">
+                    InActive Members
+                </div>
+            </div>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col box1">
+            @*style=" background:aqua*@
+            <div class="row">
+                <div class="col text-center text-white">
+                    @Model.TotalTrainers
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center text-white">
+                    Total Trainers
+                </div>
+            </div>
+        </div>
+        <div class="col  box2">
+            <div class="row">
+                <div class="col text-center text-white">
+                    @Model.ExpiredMemberShips
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col text-center text-white">
+                    Expired Memberships
+                </div>
+            </div>
+        </div>
+       @* <div class="col  box3">
+            <div class="row">
+                <div class="col text-center text-white">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center text-white ">
+                    
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>

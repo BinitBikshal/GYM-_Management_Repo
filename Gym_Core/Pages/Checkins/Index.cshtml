@@ -1,0 +1,65 @@
+﻿@page
+@inject SignInManager<IdentityUser> SignInManager
+@model Gym_Core.Pages.Checkins.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Checkins</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-page="Create">Check In Here..</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Checkin[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Checkin[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Checkin[0].Member)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Checkin[0].Plan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Checkin)
+        {
+            var Status = item.Member?.Memberships?.FirstOrDefault()?.EndDate > DateTime.Now ? "Active" : "Expired";
+            <tr>
+                <td>
+                    @Status
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.Memberships!.FirstOrDefault().EndDate);
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Member.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plan.Name)
+                </td>
+                <td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    }   
+                </td>
+            </tr>
+        } 
+
+    </tbody>
+</table>
